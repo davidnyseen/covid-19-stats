@@ -1,4 +1,6 @@
-console.log('hello world');
+console.log("hello world");
 
-var friends = ['avi', 'dani'];
+var friends = ["avi", "dani"];
 console.log(friends);
+
+console.log("hello david");
