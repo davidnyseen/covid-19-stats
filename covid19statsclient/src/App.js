@@ -4,13 +4,13 @@ import { LabelSeries, XYPlot, XAxis, YAxis, HorizontalGridLines, LineSeries, Ver
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+ function  App() {
   // const data=[
   //   {x: 1, y: 1},
   //   {x: 2, y: 5},
   //   {x: 3, y: 10}
   // ];
-  let result;
+  let result = [];
   let counter = 0, israelCovidData;
   const data = [{
     "Country": "Israel", "CountryCode": "IL", "Province": "", "City": "",
@@ -21,13 +21,15 @@ function App() {
     Cases: 11, "Status": "confirmed", Date: "2020-02-22T00:00:00Z"
   }];
   fetch("http://localhost:3003/israel/confirmed")
-    .then(res => {
-      israelCovidData = res.json();
+    .then(async res =>  {
+      console.log(res);
 
-
+      israelCovidData = await res.json();
       result = israelCovidData.map((obj) => {
         return { x: counter++, y: obj["Cases"], label: obj["Cases"] }
       });
+      console.log(result)
+
     })
     .catch(err => {
       console.log("error:", err);
